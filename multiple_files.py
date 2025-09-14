@@ -140,7 +140,7 @@ def natural_sort_key(s):
     return [int(text) if text.isdigit() else text for text in re.split(r'(\d+)', s)]
 
 def main():
-    st.set_page_config("청약 FAQ 챗봇", layout="wide")
+    st.set_page_config("PDF RAG LLM 챗봇", layout="wide")
 
     # Initialize session state
     if 'images_dict' not in st.session_state:
@@ -152,10 +152,10 @@ def main():
 
     left_column, right_column = st.columns([1, 1])
     with left_column:
-        st.header("청약 FAQ 챗봇")
+        st.header("PDF RAG LLM 챗봇")
 
         pdf_docs = st.file_uploader("PDF Uploader", type="pdf", accept_multiple_files=True)
-        button = st.button("PDF 업로드하기")
+        button = st.button("PDF 업로드하기(VectorDB 생성)")
         if pdf_docs and button:
             with st.spinner("PDF문서 저장중"):
                 pdf_paths = save_uploadedfiles(pdf_docs)
@@ -166,7 +166,7 @@ def main():
                 st.session_state.images_dict = images_dict
 
         user_question = st.text_input("PDF 문서에 대해서 질문해 주세요",
-                                      placeholder="무순위 청약 시에도 부부 중복신청이 가능한가요?")
+                                      placeholder="업로드한 파일내용 기준으로 요청하세요?")
 
         if user_question:
             response, context = process_question(user_question)
