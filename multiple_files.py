@@ -153,9 +153,10 @@ def main():
     left_column, right_column = st.columns([1, 1])
     with left_column:
         st.header("PDF RAG LLM 챗봇")
+        st.text("(git url) https://github.com/coolwis/pdf_rag_app.git")
 
-        pdf_docs = st.file_uploader("PDF Uploader", type="pdf", accept_multiple_files=True)
-        button = st.button("PDF 업로드하기(VectorDB 생성)")
+        pdf_docs = st.file_uploader("(1) PDF Uploader", type="pdf", accept_multiple_files=True)
+        button = st.button("(2) PDF 업로드하기(VectorDB 생성)")
         if pdf_docs and button:
             with st.spinner("PDF문서 저장중"):
                 pdf_paths = save_uploadedfiles(pdf_docs)
@@ -166,7 +167,7 @@ def main():
                 st.session_state.images_dict = images_dict
 
         user_question = st.text_input("PDF 문서에 대해서 질문해 주세요",
-                                      placeholder="업로드한 파일내용 기준으로 요청하세요?")
+                                      placeholder="업로드한 파일내용 기준으로 요청하세요")
 
         if user_question:
             response, context = process_question(user_question)
