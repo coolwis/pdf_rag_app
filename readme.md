@@ -1,7 +1,6 @@
 
 # 파이썬으로 RAG 웹서비스 만들기 : (langchain - VectorDB (FAISS) - OpenAI)
 
-### 가이드 영상 링크 : TBD
 ### Sample PDF 문서 링크 : [링크바로가기](https://www.molit.go.kr/USR/policyData/m_34681/dtl.jsp?search=&srch_dept_nm=&srch_dept_id=&srch_usr_nm=&srch_usr_titl=Y&srch_usr_ctnt=&search_regdate_s=&search_regdate_e=&psize=10&s_category=&p_category=&lcmspage=1&id=4765)
 
 ## 활용 기술
@@ -15,8 +14,6 @@
 
 ## 사전 준비사항
 ### OpenAI API Key 발급
-OpenAI API Key 발급 방법 : https://github.com/dabidstudio/dabidstudio_guides/blob/main/get-openai-api-key.md
-
 ### 파이썬 가상환경
 
 ## 시작 방법  
