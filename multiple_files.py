@@ -17,6 +17,7 @@ import os
 import fitz  # PyMuPDF
 import re
 
+
 from dotenv import load_dotenv, dotenv_values
 load_dotenv()
 
@@ -153,7 +154,7 @@ def main():
     left_column, right_column = st.columns([1, 1])
     with left_column:
         st.header("PDF RAG LLM 챗봇")
-        st.text("(git url) https://github.com/coolwis/pdf_rag_app.git")
+        #st.text("Tech: langchain - VectorDB(FAISS) -OpenAI(gpt-4o-mini)")
 
         pdf_docs = st.file_uploader("(1) PDF Uploader", type="pdf", accept_multiple_files=True)
         button = st.button("(2) PDF 업로드하기(VectorDB 생성)")
@@ -199,6 +200,40 @@ def main():
                 display_pdf_page(image_path, page_number)
             else:
                 st.error("페이지 번호가 범위를 벗어났습니다.")
+
+    add_footer()
+
+def add_footer():
+    footer="""<style>
+    a:link , a:visited{
+    color: blue;
+    background-color: transparent;
+    text-decoration: underline;
+    }
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<hr>
+<p> Tech/Code<div style='display: block; text-align: center;'>langchain - VectorDB(FAISS) -OpenAI(gpt-4o-mini)</div></p>
+<p><a style='display: block; text-align: center;' href="https://github.com/coolwis/pdf_rag_app.git" target="_blank">https://github.com/coolwis/pdf_rag_app.git </a></p>
+</div>
+"""
+    st.markdown(footer,unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
