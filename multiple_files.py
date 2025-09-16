@@ -18,6 +18,14 @@ import fitz  # PyMuPDF
 import re
 
 
+from langfuse.callback import CallbackHandler
+
+langfuse_handler = CallbackHandler(
+    public_key="pk-xxxxxxxxx",
+    secret_key="sk-xxxxxxxxxx",
+    host="http://localhost:3000"
+)
+
 from dotenv import load_dotenv, dotenv_values
 load_dotenv()
 
@@ -84,6 +92,9 @@ def process_question(user_question):
     chain = get_rag_chain()
     ## 질문과 문맥을 넣어서 체인 결과 호출
     response = chain.invoke({"question": user_question, "context": retrieve_docs})
+    #response = chain.invoke({"question": user_question, "context": retrieve_docs}, config={"callbacks": [langfuse_handler]})
+
+
 
     return response, retrieve_docs
 
