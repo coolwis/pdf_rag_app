@@ -35,8 +35,3 @@
     ```bash
     streamlit run multiple_files.py    
     ```
-
-
-
-## 기타
-- FAISS 뷰어 (Vector Data 확인): https://faissviewer-hu2g6bbyxgcdjjumbsfysz.streamlit.app
